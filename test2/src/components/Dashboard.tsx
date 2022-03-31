@@ -9,7 +9,7 @@ import {AuthContext} from '../context/AuthContext';
 import {AxiosContext} from '../context/AxiosContext';
 import Spinner from './Spinner';
 
-const Dashboard = () => {
+const Dashboard = ({navigation}) => {
     const axiosContext = useContext(AxiosContext);
     const authContext = useContext(AuthContext);
     const [status, setStatus] = useState('idle');
@@ -27,9 +27,7 @@ const Dashboard = () => {
         }
     };
 
-    if (status === 'loading') {
-        return <Spinner />;
-    }
+
 
     return (
         <View style={styles.container}>

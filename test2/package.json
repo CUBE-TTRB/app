@@ -10,6 +10,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-navigation/native": "^6.0.8",
+    "@react-navigation/native-stack": "^6.5.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -21,6 +23,8 @@
     "react-native": "^0.67.4",
     "react-native-axios": "^0.17.1",
     "react-native-keychain": "^8.0.0",
+    "react-native-safe-area-context": "^4.2.4",
+    "react-native-screens": "^3.13.1",
     "react-router-dom": "^6.2.2",
     "react-scripts": "^5.0.0",
     "react-validation": "^3.0.7",

@@ -8,11 +8,16 @@ import {
     Alert,
 } from 'react-native';
 import React, {useContext, useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
 import {AuthContext} from '../context/AuthContext';
 import * as Keychain from 'react-native-keychain';
 import {AxiosContext} from '../context/AxiosContext';
+import Register from "./Register";
 
-const Login = () => {
+const Login = ({navigation}) => {
     const [email, setEmail] = useState('');
 
     const [password, setPassword] = useState('');
@@ -45,9 +50,13 @@ const Login = () => {
         }
     };
 
+
+
+
     return (
+
         <SafeAreaView style={styles.container}>
-            <Text style={styles.logo}>Cats</Text>
+            <Text style={styles.logo}>Ressorce relationel</Text>
             <View style={styles.form}>
                 <TextInput
                     style={styles.input}
@@ -69,7 +78,9 @@ const Login = () => {
                 />
             </View>
             <Button title="Login" style={styles.button} onPress={() => onLogin()} />
+            <Button title="Go to Register" style={styles.button} onPress={() => navigation.navigate('Register')}/>
         </SafeAreaView>
+
     );
 };
 
