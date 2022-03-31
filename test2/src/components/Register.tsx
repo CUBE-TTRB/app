@@ -51,6 +51,7 @@ const Register = ({navigation}) =>{
                     refreshToken,
                 }),
             );
+            return (navigation.navigate('Dashboard'));
         } catch (error){
             Alert.alert('Register failed', error.response.data.message);
         }
