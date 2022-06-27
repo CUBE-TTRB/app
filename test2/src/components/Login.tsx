@@ -7,7 +7,8 @@ import {
     Button,
     Alert,
 } from 'react-native';
-import React, {useContext, useState} from 'react';
+import * as React from "react";
+import  {useContext, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -17,7 +18,7 @@ import * as Keychain from 'react-native-keychain';
 import {AxiosContext} from '../context/AxiosContext';
 import Register from "./Register";
 
-const Login = ({navigation}) => {
+function Login ({navigation}) {
     const [email, setEmail] = useState('');
 
     const [password, setPassword] = useState('');

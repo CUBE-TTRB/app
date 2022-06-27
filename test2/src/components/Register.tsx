@@ -18,7 +18,7 @@ import {AxiosContext} from "../context/AxiosContext";
 import Spinner from "./Spinner";
 import Login from "./Login";
 
-const Register = ({navigation}) =>{
+function Register ({navigation}) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName]=useState('');
