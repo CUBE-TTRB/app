@@ -1,5 +1,6 @@
 import * as React from "react";
 import {useCallback, useContext, useEffect, useState} from 'react';
+import 'react-native-gesture-handler';
 import Login from './src/components/Login';
 import {AuthContext} from './src/context/AuthContext';
 import * as Keychain from 'react-native-keychain';
@@ -10,6 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Setting from "./src/components/Setting";
+import Resource from "./src/components/Resource";
 
 
 
@@ -18,7 +20,29 @@ const Stack = createNativeStackNavigator();
 const Tab=createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
-function Auth (){
+
+function Root () {
+    return (
+        <Stack.Navigator>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+        </Stack.Navigator>
+    );
+}
+
+function MyDrawer () {
+    return(
+        <Drawer.Navigator >
+            <Drawer.Screen name="Root" component={Root}/>
+            <Drawer.Screen name="Dashboard" component={Dashboard}/>
+            <Drawer.Screen name="Setting" component={Setting}/>
+            <Drawer.Screen name="Register" component={Register} />
+            <Drawer.Screen name="Resource" component={Resource}/>
+        </Drawer.Navigator>
+    );
+};
+
+function App (){
     const authContext = useContext(AuthContext);
     const [status, setStatus] = useState('loading');
 
@@ -55,8 +79,8 @@ function Auth (){
     // @ts-ignore
     return(
       // @ts-ignore
+        <NavigationContainer>
 
-            <Stack.Navigator>
                 {authContext?.authState?.authenticated===false ?(
                     <Stack.Screen name="Login" component={Login}/>
                 ):(
@@ -64,28 +88,13 @@ function Auth (){
                 )}
                 <Stack.Screen name="Register" component={Register}/>
 
-
-
-            </Stack.Navigator>
-
+        </NavigationContainer>
 
     )
 
 };
 
-function MyDrawer () {
-    return(
-      <Drawer.Navigator useLegacyImplementation>
-          <Drawer.Screen name="Dashboard" component={Dashboard}/>
-          <Drawer.Screen name="Setting" component={Setting}/>
-      </Drawer.Navigator>
-    );
-};
-export default function App(){
-    // @ts-ignore
-    return(
-      <NavigationContainer>
-          <Auth/>
-      </NavigationContainer>
-    )
-};
+
+export default  App;
+
+

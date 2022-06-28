@@ -8,14 +8,21 @@ import {AxiosContext} from '../context/AxiosContext';
 import Spinner from './Spinner';
 import Setting from "./Setting";
 
+
+
 function Dashboard ({route,navigation})  {
     const axiosContext = useContext(AxiosContext);
     const authContext = useContext(AuthContext);
     const [status, setStatus] = useState('idle');
     const [name, setName]=useState('');
     let [response, setResponse]=useState([]);
+
+
+
+
     const loadname = async () => {
         setStatus('loading');
+
         try {
              setResponse = await axiosContext.authAxios.get('/users');
             setName(response.data.name);
@@ -25,6 +32,7 @@ function Dashboard ({route,navigation})  {
             setStatus('error');
         }
     };
+
 
     let listViewItemSeparator = () => {
         return (
@@ -36,6 +44,8 @@ function Dashboard ({route,navigation})  {
 
 
     let ListReponse= (item) =>{
+
+
         return(
           <View
                 key={item.id}

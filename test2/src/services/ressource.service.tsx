@@ -7,7 +7,7 @@ const API_URL = "https://api-cube.remidurieu.dev/resources/";
 
 
 
-const getPublicResources = () => {
+export const getPublicResources = () => {
   return axios.get(API_URL);
 };
 

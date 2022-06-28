@@ -17,13 +17,17 @@ import {AuthContext} from '../context/AuthContext';
 import * as Keychain from 'react-native-keychain';
 import {AxiosContext} from '../context/AxiosContext';
 import Register from "./Register";
+import jwtDecode from "jwt-decode";
 
 function Login ({navigation}) {
     const [email, setEmail] = useState('');
-
     const [password, setPassword] = useState('');
+    const [token,setToken]=useState('');
+
     const authContext = useContext(AuthContext);
     const {publicAxios} = useContext(AxiosContext);
+    var jwtDecode = require('jwt-decode');
+
 
     const onLogin = async () => {
         try {
@@ -32,6 +36,8 @@ function Login ({navigation}) {
                 password,
             });
             console.log(response.data);
+
+            setToken(response.data);
             const {accessToken, refreshToken} = response.data;
             authContext.setAuthState({
                 accessToken,
@@ -46,6 +52,8 @@ function Login ({navigation}) {
                     refreshToken,
                 }),
             );
+
+            navigation.navigate('Dashboard');
         } catch (error) {
             Alert.alert('Login Failed', error.response.data.message);
         }
@@ -78,7 +86,7 @@ function Login ({navigation}) {
                     value={password}
                 />
             </View>
-            <Button title="Login" style={styles.button} onPress={() => onLogin()} />
+            <Button title="Login" style={styles.button} onPress={() => onLogin()}  />
             <Button title="Go to Register" style={styles.button} onPress={() => navigation.navigate('Register')}/>
         </SafeAreaView>
 
