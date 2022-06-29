@@ -9,6 +9,7 @@ import {SafeAreaView} from "react-native-safe-area-context";
 
 import {RouteParams} from "../navigation/RootNavigatior";
 import {ResourceType} from "../types/Resource.type";
+import QuillEditor from "react-native-cn-quill";
 
 interface ResourceProps {}
 
@@ -51,7 +52,9 @@ export const Resource: React.FunctionComponent<ResourceProps> = ({}) => {
                         <Text>{resources.title}</Text>
                         <Text>{resources.type}</Text>
                         <Text>{resources.visibility}</Text>
+                        <QuillEditor
 
+                        />
                     </View>
                 ))
                 ):(
