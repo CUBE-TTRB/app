@@ -11,7 +11,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Setting from "./src/components/Setting";
-import Resource from "./src/components/Resource";
+import ResourceContent from "./src/components/ResourceContent";
+import AddResource from "./src/components/AddResource";
 
 
 
@@ -38,6 +39,7 @@ function MyDrawer () {
             <Drawer.Screen name="Setting" component={Setting}/>
             <Drawer.Screen name="Register" component={Register} />
             <Drawer.Screen name="Resource" component={Resource}/>
+            <Drawer.Screen name="AddResource" component={AddResource}/>
         </Drawer.Navigator>
     );
 };

@@ -3,7 +3,7 @@ import authHeader from "./auth-header";
 import { useContext, useState } from "react";
 
 
-const API_URL = "https://api-cube.remidurieu.dev/resources/";
+const API_URL = "https://api-cube.remidurieu.dev/resources";
 
 
 
@@ -15,12 +15,22 @@ const deleteResources = (id) => {
   return axios.delete(API_URL+id)
 }
 
-const updateResources = (id, visibility, title, body, categoryId) => {
+const updateResources = (id,type, visibility, title, body, categoryId) => {
   return axios.patch(API_URL+id,{
-    "resource": { "visibility":visibility,
+    "resource": { "type":type,"visibility":visibility,
       "title":title,
       "body":body,
       "categoryId":categoryId
+    }
+  })
+}
+export const addRessources = (type,visibility,title,body) => {
+  return axios.post(API_URL,{
+    "resource":{
+      "type":type,
+      "visibility":visibility,
+      "title":title,
+      "body":body
     }
   })
 }
