@@ -11,7 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Setting from "./src/components/Setting";
-import ResourceContent from "./src/components/ResourceContent";
+import {Resource} from "./src/components/ResourceContent";
 import AddResource from "./src/components/AddResource";
 
 
