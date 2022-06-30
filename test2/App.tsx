@@ -54,12 +54,12 @@ function App (){
             // @ts-ignore
             if ("password" in value) {
                 const jwt = JSON.parse(value.password);
-            }
+
 
             authContext.setAuthState({
                 accessToken: jwt.accessToken !== null,
 
-            });
+            })};
             setStatus('success');
         } catch (error) {
             setStatus('error');

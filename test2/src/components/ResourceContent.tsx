@@ -5,17 +5,20 @@ import * as React from "react";
 import {useEffect,useState} from "react";
 import {ActivityIndicator, Text, View} from "react-native";
 import {SafeAreaView} from "react-native-safe-area-context";
-//import {WebViewQuillJS} from "react-native-webview-quilljs/index";
+import WebViewQuillJS from "react-native-webview-quilljs";
+
 
 import {RouteParams} from "../navigation/RootNavigatior";
 import {ResourceType} from "../types/Resource.type";
-import QuillEditor from "react-native-cn-quill";
+
 
 interface ResourceProps {}
 
 export const Resource: React.FunctionComponent<ResourceProps> = ({}) => {
     const [resources,setResources]=useState<ResourceType[]>();
+    const [bodyDelta,setBodyDelta]=useState([]);
     const navigation = useNavigation<NativeStackNavigationProp<RouteParams>>();
+
     /*useEffect(() => {
         axios
             .get<ResourceType[]>('https://api-cube.remidurieu.dev/resources')
@@ -36,6 +39,10 @@ export const Resource: React.FunctionComponent<ResourceProps> = ({}) => {
     axios.get('https://api-cube.remidurieu.dev/resources')
         .then(async (res) => {
             setResources(res.data.result);
+console.log(res.data.result.body)
+
+
+
         })
         .catch((err) => {
             console.log(err);
@@ -43,6 +50,7 @@ export const Resource: React.FunctionComponent<ResourceProps> = ({}) => {
             return []
         });
 
+    // @ts-ignore
     return (
         <SafeAreaView >
             {resources? (
@@ -52,10 +60,15 @@ export const Resource: React.FunctionComponent<ResourceProps> = ({}) => {
                         <Text>{resources.title}</Text>
                         <Text>{resources.type}</Text>
                         <Text>{resources.visibility}</Text>
-                        <QuillEditor
+                        <WebViewQuillJS
+                            backgroundColor={"black"}
+                            content={resources}
 
+                            isReadOnly
                         />
                     </View>
+
+
                 ))
                 ):(
                 <ActivityIndicator size="large" color="black"/>
